@@ -1,0 +1,6 @@
+@MineWebApi_HostAddress = http://localhost:5243
+
+GET {{MineWebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
