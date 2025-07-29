@@ -19,7 +19,20 @@ namespace MineWebApi
 
             builder.Services.AddDbContext<SuperHeroesDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactApp", builder =>
+                {
+                    builder.WithOrigins("http://localhost:3000")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
+
+
             var app = builder.Build();
+
+            app.UseCors("AllowReactApp");
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
