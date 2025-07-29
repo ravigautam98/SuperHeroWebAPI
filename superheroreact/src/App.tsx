@@ -27,7 +27,7 @@ function App() {
             <ul>
                 {forecast.map((item, index) => (
                     <li key={index}>
-                        {item.date} — {item.summary} — {item.temperatureC}°C
+                        {item.date} | {item.summary} | {item.temperatureC}'C
                     </li>
                 ))}
             </ul>
