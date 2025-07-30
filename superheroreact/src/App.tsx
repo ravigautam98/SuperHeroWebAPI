@@ -21,8 +21,15 @@ function App() {
             .catch(error => console.error("API error:", error));
     }, []);
 
+    const fetchData = () => {
+        fetch('/weatherforecast')
+            .then(res => res.json())
+            .then(data => setForecast(data));
+    };
+
     return (
-        <div className="App">
+        <>
+            <div className="App" style={{ background: "red", borderRadius: "5px", margin : "10px" }} >
             <h1>My Weather App</h1>
             <ul>
                 {forecast.map((item, index) => (
@@ -32,6 +39,10 @@ function App() {
                 ))}
             </ul>
         </div>
+        <div>
+             <button onClick={fetchData}>Refresh</button>
+        </div>
+        </>
     );
 }
 
